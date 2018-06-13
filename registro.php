@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
-    <script src="js/bootstrap.js"></script>
+    <script src=js/bootstrap.js></script>
     <title>Registro</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +21,7 @@
         $("#usuario").change(function(){
             var user = $(this).val();
             $.ajax({
-            url: 'verificarUser.php',
+            url: 'action/verificarUser.php',
             type: 'POST',
             data: {
                 'user': user,
@@ -54,7 +54,7 @@
     </script>
 </head>
 <body>
-    <form id="formulario" method="POST" action="registrarUsuario.php">
+<form id="formulario" method="POST" action="action/registrarUsuario.php">
     <div class="container py-3">
     <div class="row">
         <div class="mx-auto col-sm-6">
@@ -99,6 +99,40 @@
                                     <label class="col-lg-3 col-form-label form-control-label">Fecha Nacimiento</label>
                                     <div class="col-lg-9">
                                     <input class="form-control" type="date" name="fnacimiento" id="fnacimiento" required/>
+                                    </div>
+                                </div>                    
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Rut</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" name="rut" id="rut" required/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Teléfono</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" name="telefono" id="telefono" required/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Dirección</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" name="direccion" id="direccion" required/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Correo</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" name="correo" id="correo" required/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Tipo de Usuario</label>
+                                    <div class="col-lg-9">
+                                        <select id="tipoUsuario" name="tipoUsuario" class="form-control">
+                                            <option value="">Seleccione...</option>
+                                            <option value="1">Voluntario</option>
+                                            <option value="2">Donador</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
