@@ -23,6 +23,36 @@ $(document).ready(function() {
         }
         });
     });
+
+    $("#btnAprobar").on('click', function(){
+        var id = $('#idAprobar').val();
+        $.ajax({
+          url: 'action/changeStatus.php',
+          type: 'POST',
+          data: {
+            'estado': 1,
+            'id': id,
+          },
+          success: function(response){
+            location.reload();
+          }
+        });
+    });
+
+    $("#btnRechazar").on('click', function(){
+        var id = $('#idRechazar').val();
+        $.ajax({
+          url: 'action/changeStatus.php',
+          type: 'POST',
+          data: {
+            'estado': 0,
+            'id': id,
+          },
+          success: function(response){
+            location.reload();
+          }
+        });
+    });
 });
 
 function validarPass(){
@@ -36,5 +66,13 @@ function validarPass(){
     }else{
         document.getElementById("pass").style.borderColor = "green";
         document.getElementById("verif").style.borderColor = "green";
+    }
+}
+
+function estado(id,estado){
+    if (estado == 0) {
+        document.getElementById('idRechazar').value = id;
+    }else{
+        document.getElementById('idAprobar').value = id;
     }
 }

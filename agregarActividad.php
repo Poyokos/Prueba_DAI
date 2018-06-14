@@ -34,7 +34,7 @@
     </script>
 </head>
 <body>
-    <form id="formulario">
+    <form id="formulario" method="POST">
     <div class="container py-3">
     <div class="row">
         <div class="mx-auto col-sm-6">

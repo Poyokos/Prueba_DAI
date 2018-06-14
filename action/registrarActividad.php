@@ -13,8 +13,10 @@ SQL;
 
 if (mysqli_query($conn,$sql)) {
     echo "Se a registrado la actividad con exito";
+    die();
 }else{
     echo "Error al intentar agregar la actividad";
+    die();
 }
 
 
