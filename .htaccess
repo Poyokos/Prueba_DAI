@@ -1,0 +1,18 @@
+Options +Indexes
+Options +SymLinksIfOwnerMatch
+RewriteEngine On
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+
+DirectoryIndex inicio.html index.htm index.html index.php
+
+#HOME
+RewriteRule ^home$ index.php [QSA]
+
+#LOGIN
+RewriteRule ^login$ login.php [QSA]
+
+#REGISTRO
+RewriteRule ^registro$ registro.php [QSA]

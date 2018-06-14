@@ -1,5 +1,5 @@
 <?php
-include("conexion.php");
+include("conex.php");
 
 $usuario = $_POST["usuario"];
 $pass = $_POST["pass"];
@@ -12,15 +12,22 @@ $correo = $_POST["correo"];
 $fnacimiento = $_POST["fnacimiento"];
 $tipoUsuario = $_POST["tipoUsuario"];
 
-$pass = dec_enc("encrypt",$pass);
+$rand = rand(1000000, 9999999);
 
-$sql = <<<SQL
-    INSERT INTO usuario(user,pass,tipo_usuario,rut,nombre,apellido,fecha_nacimiento,telefono,direccion,correo) VALUES('$usuario','$pass','$tipoUsuario','$rut','$nombre','$apellido','$fnacimiento','$telefono','$direccion','$correo')
-SQL;
+$pass_encrypted = md5($pass);
+$password_salt = md5($rand);
 
-echo $sql;
+$password = hash('md5', $pass_encrypted.$password_salt);
 
-mysqli_query($conn,$sql);
+$sql = "INSERT INTO usuario(user,pass, password_salt,tipo_usuario,rut,nombre,apellido,fecha_nacimiento,telefono,direccion,correo) VALUES('$usuario','$password', '$password_salt','$tipoUsuario','$rut','$nombre','$apellido','$fnacimiento','$telefono','$direccion','$correo')";
 
-header("Location: login.php");
+$con->query($sql);
+
+if ($con->errno) {
+	echo 'error '.$con->error;
+}else{
+	header("Location: ../login");
+}
+
+
 ?>

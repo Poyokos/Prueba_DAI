@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -9,7 +12,7 @@
     <script src=js/bootstrap.js></script>
   </head>
   <body class="text-center">
-    <form class="form-signin" method="POST" action="usuario.php">
+    <form class="form-signin" method="POST" action="action/login.php">
       <h1 class="h3 mb-3 font-weight-normal">¡Bienvenido!</h1>
       <label for="inputUsuario" class="sr-only">Usuario</label>
       <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuario" required autofocus>
@@ -29,7 +32,7 @@
       ?>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
       <div>
-        <a href="registro.php">Registrarse</a>
+        <a href="registro">Registrarse</a>
       </div>
     </form>
   </body>
