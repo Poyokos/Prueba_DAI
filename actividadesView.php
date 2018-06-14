@@ -50,7 +50,7 @@ session_start();
             echo    '<td>'.$row["titulo"].'</td>';
             echo    '<td>'.$row["objetivo"].'</td>';
             echo    '<td>'.$row["fecha_actividad"].'</td>';
-            echo    '<td>'.$row["estado"].'</td>';
+            echo    '<td>'.ucfirst($row["estado"]).'</td>';
             echo    '<td>'.$row["user"].'</td>';
             if ($row["estado"] == "pendiente") {
                 echo    '<td>
