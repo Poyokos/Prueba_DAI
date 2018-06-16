@@ -1,5 +1,6 @@
 <?php
 include("conex.php");
+session_start();
 
 $cn = new Conex();
 

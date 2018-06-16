@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('action/verificarSession.php');
 ?>
 <!DOCTYPE html>
