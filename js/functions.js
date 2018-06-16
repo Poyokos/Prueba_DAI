@@ -53,6 +53,21 @@ $(document).ready(function() {
           }
         });
     });
+
+    $("#btnSuscribir").on('click', function(){
+        var monto = $('#monto').val();	
+        $.ajax({
+            url: 'action/registrarDonacion.php',
+            type: 'POST',
+            data: {
+                'monto': monto,
+            },
+            success: function(response){
+                alert(response);
+                location.reload();
+            }
+        });       		
+    });
 });
 
 function validarPass(){

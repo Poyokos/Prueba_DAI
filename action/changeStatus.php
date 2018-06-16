@@ -7,11 +7,11 @@ $id = $_POST["id"];
 
 if ($estado == 1) {
     $sql = <<<SQL
-    UPDATE actividad SET estado = 'aprobado' WHERE id = '$id'
+    UPDATE actividad SET estado_id = '1' WHERE id = '$id'
 SQL;
-}else{
+}elseif($estado == 0){
     $sql = <<<SQL
-    UPDATE actividad SET estado = 'rechazado' WHERE id = '$id'
+    UPDATE actividad SET estado_id = '4' WHERE id = '$id'
 SQL;
 }
 
