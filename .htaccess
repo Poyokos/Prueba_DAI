@@ -9,10 +9,21 @@ RewriteCond %{SCRIPT_FILENAME} !-f
 DirectoryIndex inicio.html index.htm index.html index.php
 
 #HOME
-RewriteRule ^home$ index.php [QSA]
+RewriteRule ^home$ index.php?op=home [QSA]
 
 #LOGIN
 RewriteRule ^login$ login.php [QSA]
 
 #REGISTRO
 RewriteRule ^registro$ registro.php [QSA]
+
+#actividades
+RewriteRule ^actividades$ index.php?op=actividades [QSA]
+
+RewriteRule ^mis-actividades$ index.php?op=mis-actividades [QSA]
+
+RewriteRule ^donaciones$ index.php?op=donaciones [QSA]
+
+RewriteRule ^mis-donaciones$ index.php?op=mis-donaciones [QSA]
+
+RewriteRule ^mi-cuenta$ index.php?op=mi-cuenta [QSA]

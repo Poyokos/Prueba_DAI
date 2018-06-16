@@ -1,9 +1,34 @@
 <?php 
 
-$con = new mysqli("localhost", "root", '', 'dai');
-$con->query("SET NAMES 'utf8'");
+/**
+* 
+*/
+class Conex
+{
+	public $host;
+	public $user;
+	public $pass;
+	public $db;
+	
+	public function __construct()
+	{
+		$this->host = 'localhost';
+		$this->user = 'root';
+		$this->pass = '';
+		$this->db = 'dai';
+	}
 
-if ($con->errno) {
-	echo "Error al conectar con la base de datos";
+	public function newConex(){
+		$con = new mysqli($this->host, $this->user, $this->pass, $this->db);
+		$con->query("SET NAMES 'utf8'");
+
+		if ($con->errno) {
+			return "Error al conectar con la base de datos";
+		}else{
+			return $con;
+		}
+	}
 }
+
+
 ?>
