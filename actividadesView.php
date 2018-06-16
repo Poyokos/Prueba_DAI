@@ -42,17 +42,17 @@ session_start();
     </thead>
     <tbody>
     <?php
-        $sql = "SELECT *,a.id AS id_actividad FROM actividad a join usuario u on u.id = a.id_user";
+        $sql = "SELECT *,a.id AS id_actividad, e.nombre AS estado FROM actividad a join usuario u on u.id = a.id_user join estado e on e.id = a.estado_id";
         $response = mysqli_query($conn,$sql);
         while ($row = mysqli_fetch_assoc($response)) {
             echo "<tr>";
             echo    '<td>'.$row["id_actividad"].'</td>';
-            echo    '<td>'.$row["titulo"].'</td>';
-            echo    '<td>'.$row["objetivo"].'</td>';
+            echo    '<td>'.$row["nombre"].'</td>';
+            echo    '<td>'.$row["observacion"].'</td>';
             echo    '<td>'.$row["fecha_actividad"].'</td>';
             echo    '<td>'.ucfirst($row["estado"]).'</td>';
             echo    '<td>'.$row["user"].'</td>';
-            if ($row["estado"] == "pendiente") {
+            if (strtolower($row["estado"]) == "pendiente") {
                 echo    '<td>
                 <center>
                 <button type="button" class="btn btn-success" onclick="estado(\''.$row["id_actividad"].'\',\'1\')" title="Aprovar" data-toggle="modal" data-target="#aprobarModal">
@@ -65,7 +65,7 @@ session_start();
                 </center>
                         </td>';
                 echo "</tr>";
-            }else if($row["estado"] == "rechazado") {
+            }else if(strtolower($row["estado"]) == "rechazado") {
                 echo    '<td>
                 <center>
                 <button type="button" class="btn btn-success" onclick="estado(\''.$row["id_actividad"].'\',\'1\')" title="Aprovar" data-toggle="modal" data-target="#aprobarModal">
