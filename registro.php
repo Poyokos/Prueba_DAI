@@ -130,8 +130,8 @@
                                     <div class="col-lg-9">
                                         <select id="tipoUsuario" name="tipoUsuario" class="form-control">
                                             <option value="">Seleccione...</option>
-                                            <option value="1">Voluntario</option>
-                                            <option value="2">Donador</option>
+                                            <option value="2">Voluntario</option>
+                                            <option value="3">Donador</option>
                                         </select>
                                     </div>
                                 </div>

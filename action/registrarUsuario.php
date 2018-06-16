@@ -1,6 +1,10 @@
 <?php
 include("conex.php");
 
+$cn = new Conex();
+
+$con = $cn->newConex();
+
 $usuario = $_POST["usuario"];
 $pass = $_POST["pass"];
 $nombre = $_POST["nombre"];
@@ -19,7 +23,7 @@ $password_salt = md5($rand);
 
 $password = hash('md5', $pass_encrypted.$password_salt);
 
-$sql = "INSERT INTO usuario(user,pass, password_salt,tipo_usuario,rut,nombre,apellido,fecha_nacimiento,telefono,direccion,correo) VALUES('$usuario','$password', '$password_salt','$tipoUsuario','$rut','$nombre','$apellido','$fnacimiento','$telefono','$direccion','$correo')";
+$sql = "INSERT INTO usuario(user,pass, password_salt,tipo_usuario_id,rut,nombre,apellido,fecha_nacimiento,telefono,direccion,correo) VALUES('$usuario','$password', '$password_salt','$tipoUsuario','$rut','$nombre','$apellido','$fnacimiento','$telefono','$direccion','$correo')";
 
 $con->query($sql);
 
