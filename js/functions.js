@@ -45,7 +45,22 @@ $(document).ready(function() {
           url: 'action/changeStatus.php',
           type: 'POST',
           data: {
-            'estado': 0,
+            'estado': 4,
+            'id': id,
+          },
+          success: function(response){
+            location.reload();
+          }
+        });
+    });
+
+    $("#btnCancelar").on('click', function(){
+        var id = $('#idCancelar').val();
+        $.ajax({
+          url: 'action/changeStatus.php',
+          type: 'POST',
+          data: {
+            'estado': 3,
             'id': id,
           },
           success: function(response){
@@ -85,6 +100,10 @@ function validarPass(){
 }
 
 function estado(id,estado){
+    if (estado == 3) {
+        document.getElementById('idCancelar').value = id;
+        return;
+    }
     if (estado == 0) {
         document.getElementById('idRechazar').value = id;
     }else{
