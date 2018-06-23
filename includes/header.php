@@ -3,6 +3,7 @@
 	<nav>
 		<ul>
 			<li><a href="home">Inicio</a></li>
+			<li><a href="visor-actividades">Actividades</a></li>
 			<?php echo ($tipo_usuario == 1 || $tipo_usuario == 3) ? '<li><a href="actividades">Actividades</a></li>' : ''; ?>
 			<?php echo ($tipo_usuario == 1) ? '<li><a href="donaciones">Donaciones</a></li>' : ''; ?>
 		</ul>

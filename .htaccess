@@ -27,3 +27,5 @@ RewriteRule ^donaciones$ index.php?op=donaciones [QSA]
 RewriteRule ^mis-donaciones$ index.php?op=mis-donaciones [QSA]
 
 RewriteRule ^mi-cuenta$ index.php?op=mi-cuenta [QSA]
+
+RewriteRule ^visor-actividades$ index.php?op=visor-actividades [QSA]
