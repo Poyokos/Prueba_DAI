@@ -14,7 +14,7 @@ if (isset($_GET["op"])) {$op = $_GET["op"]; }else{ $op = 'home'; }
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<base href="http://localhost/pruebaDai/">
+	<base href="http://localhost/Prueba_DAI/">
 	<meta charset="UTF-8">
 	<title>Fundación - Home</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -28,6 +28,7 @@ if (isset($_GET["op"])) {$op = $_GET["op"]; }else{ $op = 'home'; }
 	<script src="js/bootstrap.js"></script>
     <script src="js/functions.js"></script>
 	<script type="text/javascript" src="js/all.js"></script>
+	<script src="js/highcharts.js"></script>
 </head>
 <body>
 
@@ -42,5 +43,23 @@ if (isset($_GET["op"])) {$op = $_GET["op"]; }else{ $op = 'home'; }
 	include('includes/footer.php');
 
 ?>
+
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalCenterTitle">Listado de donaciones</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body arr_resp">
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 </body>
 </html>

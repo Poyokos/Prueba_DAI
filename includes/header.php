@@ -11,7 +11,6 @@
 			<ul>
 				<li><a href=""><i class="fas fa-user"></i>  <?= $func->getNombre($func->session); ?></a>
 					<ul>
-						<li><a href="mi-cuenta">Mi cuenta</a></li>
 						<?php echo ($tipo_usuario == 2) ? '<li><a href="mis-actividades">Mis Actividades</a></li>' : ''; ?>
 						<?php echo ($tipo_usuario == 3) ? '<li><a href="mis-donaciones">Mis Donaciones</a></li>' : ''; ?>
 						<li><a href="action/sessionDestroy.php">Cerrar Sesión</a></li>

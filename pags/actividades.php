@@ -1,6 +1,5 @@
 <?php
 include('action/conexion.php');
-session_start();
 ?>
 
 <!DOCTYPE html>
@@ -42,15 +41,15 @@ session_start();
     </thead>
     <tbody>
     <?php
-        $sql = "SELECT *,a.id AS id_actividad, e.nombre AS estado FROM actividad a join usuario u on u.id = a.id_user join estado e on e.id = a.estado_id";
+        $sql = "SELECT *,a.id AS id_actividad, e.nombre AS estado, a.nombre as nombre_act FROM actividad a join usuario u on u.id = a.id_user join estado e on e.id = a.estado_id";
         $response = mysqli_query($conn,$sql);
         while ($row = mysqli_fetch_assoc($response)) {
             echo "<tr>";
             echo    '<td>'.$row["id_actividad"].'</td>';
-            echo    '<td>'.$row["nombre"].'</td>';
+            echo    '<td>'.$row["nombre_act"].'</td>';
             echo    '<td>'.$row["observacion"].'</td>';
             echo    '<td>'.$row["fecha_actividad"].'</td>';
-            echo    '<td>'.ucfirst($row["estado"]).'</td>';
+            echo    '<td>'.$row["estado"].'</td>';
             echo    '<td>'.$row["user"].'</td>';
             if (strtolower($row["estado"]) == "pendiente") {
                 echo    '<td>

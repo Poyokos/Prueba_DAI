@@ -50,21 +50,76 @@ class Functions extends Conex
 		return (int)$this->session;
 	}
 
-	public function getQuery($select, $from, $where = null, $order = null){
+	public function getQuery($select, $from, $where, $order){
 
 		$query = "SELECT {$select} FROM {$from}";
-		if ($where != null) {
+		if ($where != '') {
 			$query .= " WHERE $where";
 		}
 
-		if ($where != null) {
+		if ($where != '') {
 			$query .= " ORDER BY $order";
 		}
 		
+		return $query;
 		$result = $this->con->query($query);
 		$r[] = $result->fetch_array(MYSQLI_ASSOC);
 
 		return $r;
+
+	}
+
+	public function getDonacionesMes(){
+		$mes = date('m');
+
+		$result = $this->con->query("SELECT d.user_id, ac.nombre, d.fecha_donacion, sum(d.monto) as monto
+from donacion d join actividad ac on ac.id = d.actividad_id
+where DATE_FORMAT(d.fecha_donacion, '%m') = $mes
+group by d.actividad_id");
+ 		$result->fetch_array(MYSQLI_ASSOC);
+
+		foreach ($result as $item) {
+			$arr[] = $item;
+		}
+		
+
+		return $arr;
+	}
+
+	public function doProyectadas(){
+		$mes = date('m');
+
+		$result = $this->con->query("SELECT sum(d.monto) as monto, d.fecha_donacion from donacion d join actividad act on d.actividad_id = act.id where DATE_FORMAT(d.fecha_donacion, '%m') > $mes group by DATE_FORMAT(d.fecha_donacion, '%m')");
+
+		$meses_a_proyectar = 12 - (int)$mes;
+
+		$result->fetch_array(MYSQLI_ASSOC);
+		foreach ($result as $item) {
+			$arr['donacion'][] = $item;
+		}
+		$arr['meses'][] = $meses_a_proyectar;
+		return $arr;
+	}
+
+	public function getDonadores(){
+		$result = $this->con->query("SELECT u.id, u.user, u.telefono, u.rut FROM usuario u JOIN donacion d ON d.user_id = u.id WHERE u.tipo_usuario_id = 3 GROUP BY u.id");
+		$result->fetch_array(MYSQLI_ASSOC);
+		foreach ($result as $item) {
+			$arr[] = $item;
+		}
+
+		return $arr;
+	}
+
+	public function getDonacionesPorUsuario($id){
+		$result = $this->con->query("SELECT sum(d.monto) as monto, act.nombre from usuario u join donacion d on d.user_id = u.id join actividad act on act.id = d.actividad_id where u.id = {$id} group by act.nombre");
+
+		$result->fetch_array(MYSQLI_ASSOC);
+		foreach ($result as $item) {
+			$arr[] = $item;
+		}
+
+		return $arr;
 
 	}
 }
